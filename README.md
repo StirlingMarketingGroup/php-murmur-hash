@@ -36,4 +36,4 @@ And in PHP
     php -r 'echo murmur_hash("Yeet");'
     // -7850704420789372250
 
-Note that those are getting treated as signed integers for both environments, which you can solve in MySQL by using `cast(`murmur_hash`('Yeet')as unsigned)`, but PHP doesn't support unsigned integers.
+Note that those are getting treated as signed integers for both environments, which you can solve in MySQL by using ``cast(`murmur_hash`('Yeet')as unsigned)``, but PHP doesn't support unsigned integers.
