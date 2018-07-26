@@ -37,3 +37,13 @@ And in PHP
     // -7850704420789372250
 
 Note that those are getting treated as signed integers for both environments, which you can solve in MySQL by using ``cast(`murmur_hash`('Yeet')as unsigned)``, but PHP doesn't support unsigned integers.
+
+In MySQL, you can convert this integer to a binary string (`conv` in MySQL already treats it as unsigned, unless you give the "to base" a negative sign, like "-16")
+
+    unhex(conv(`murmur_hash`('Yeet'),10,16))
+    -- 0x930CB1EC9242BAA6
+
+In PHP, you can get to the same output by using the `pack` function. The "J" option sepcifies "unsigned long long (always 64 bit, big endian byte order)", which is what I needed to use to get the same output, but for some reason if I used Q, or "unsigned long long (always 64 bit, machine byte order)", I get something different than MySQL, even if I do these things on the same machine as the MySQL server. (Maybe MySQL forces big endian onwith `conv`?)
+
+    echo bin2hex(pack("J",murmur_hash("Yeet")));
+    // 930cb1ec9242baa6
