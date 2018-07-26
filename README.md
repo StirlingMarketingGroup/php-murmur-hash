@@ -18,11 +18,11 @@ Then run the following commands to build the extension and install it
     make
     make install
     
-This should place the module into your PHP extensions directory (which you can find by running `php-config --extension-dir`.
+This should place the module into your PHP extensions directory (which you can find by running `php-config --extension-dir`).
 
 Lastly, add `extension=murmur_hash` to the end of your php.ini file, which will be /etc/php/7.2/apache2/php.ini for PHP 7.2.
 
-**This plugins doesn't function exactly the same, and only accepts a single input, unlike the MySQL version which accepts infinite inputs.**
+**Note that this plugin doesn't function exactly the same as the MySQL version from Percona, and only accepts a single input, unlike the MySQL version which accepts infinite inputs. Only single-argument use will be the same.**
 
 ## Example output
 
