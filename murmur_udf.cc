@@ -41,7 +41,7 @@
  */
 
 // #include <my_global.h>
-#include <my_sys.h>
+// #include <my_sys.h>
 #include <mysql.h>
 #include <ctype.h>
 #include <string.h>
@@ -67,7 +67,7 @@
  * This is the 64 bit version of MurmurHash2 for 32-bit platforms.
  */
 
-ulonglong
+unsigned long long
 MurmurHash2( const void *key, int len, unsigned int seed ) {
 
    const unsigned int m = 0x5bd1e995;
@@ -108,7 +108,7 @@ MurmurHash2( const void *key, int len, unsigned int seed ) {
    h2 ^= h1 >> 22; h2 *= m;
    h1 ^= h2 >> 17; h1 *= m;
 
-   ulonglong h = h1;
+   unsigned long long h = h1;
 
    h = (h << 32) | h2;
    return h;
@@ -124,11 +124,11 @@ murmur_hash_init( UDF_INIT* initid, UDF_ARGS* args, char* message) {
    return 0;
 }
 
-ulonglong 
+unsigned long long 
 murmur_hash( UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error ) {
 
    uint null_default = HASH_NULL_DEFAULT;
-   ulonglong result  = HASH_64_INIT;
+   unsigned long long result  = HASH_64_INIT;
    uint i;
 
    for (i = 0 ; i < args->arg_count; ++i ) {
@@ -151,7 +151,7 @@ murmur_hash( UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error ) {
             {
                long long int_val;
                int_val = *((long long*) args->args[i]);
-               result = MurmurHash2((const void*)&int_val, sizeof(ulonglong), result);
+               result = MurmurHash2((const void*)&int_val, sizeof(unsigned long long), result);
             }
             break;
          default:
