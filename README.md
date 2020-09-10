@@ -13,6 +13,7 @@ Clone this repo somewhere with the following and enter the new folder
 
 Then run the following commands to build the extension and install it
 
+    sudo apt install -y libmysqlclient-dev
     phpize
     CPPFLAGS="-fPIC -Wall -I/usr/include/mysql" ./configure --enable-murmur-hash
     make
