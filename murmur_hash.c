@@ -26,7 +26,7 @@
 #include "php_ini.h"
 #include "ext/standard/info.h"
 #include "php_murmur_hash.h"
-#include "include/murmur_udf.cc"
+#include "murmur_udf.cc"
 
 /* If you declare any globals in php_murmur_hash.h uncomment this:
 ZEND_DECLARE_MODULE_GLOBALS(murmur_hash)

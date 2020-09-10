@@ -16,7 +16,7 @@ Then run the following commands to build the extension and install it
     phpize
     CPPFLAGS="-fPIC -Wall -I/usr/include/mysql" ./configure --enable-murmur-hash
     make
-    make install
+    sudo make install
     
 This should place the module into your PHP extensions directory (which you can find by running `php-config --extension-dir`).
 
